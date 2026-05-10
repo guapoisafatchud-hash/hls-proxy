@@ -3,7 +3,7 @@ const cors = require('cors');
 const { Readable } = require('stream');
 
 const app = express();
-const PORT = process.env.PROXY_PORT || 3000;
+const PORT = process.env.PORT || process.env.PROXY_PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -180,4 +180,4 @@ app.options('/proxy', (req, res) => {
 app.get('/', (_, res) => res.json({ status: 'proxy running' }));
 app.get('/health', (_, res) => res.json({ status: 'ok' }));
 
-app.listen(PORT, () => console.log(`[?] Express HLS Proxy running on port ${PORT}`));
+app.listen(PORT, () => console.log(`[✓] Express HLS Proxy running on port ${PORT}`));
